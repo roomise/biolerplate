@@ -1,0 +1,11 @@
+import Express from "express";
+import "dotenv/config";
+import { dbConnection } from "./db/config.js";
+import dbSync from "./db/init.js";
+import AllRouters from "./routers/index.js";
+const app = Express();
+app.use(Express.json());
+dbConnection();
+dbSync();
+app.use(AllRouters);
+app.listen(3000, console.log("Server Started"));
